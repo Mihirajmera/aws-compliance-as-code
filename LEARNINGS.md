@@ -1,0 +1,7 @@
+# Learnings
+
+## Day 01
+
+Four words that get used interchangeably are actually four different layers, and IAM-01 (root account MFA) shows all of them. The **requirement** is what a framework says in its own language: NIST IA-2(1) says privileged accounts must use multi-factor authentication, and ISO A.8.5 asks for secure authentication. The **control** is how we meet that requirement in our environment: "the AWS root user must have MFA enabled." The **test** is the repeatable procedure that proves the control is working, which here is calling `iam:GetAccountSummary` and checking that `AccountMFAEnabled` equals 1. The **evidence** is the output of that test, the saved JSON response with a timestamp and account ID, which an auditor can inspect without ever logging into the console.
+
+The crosswalk matters because auditors and compliance teams rarely deal with only one framework. Without a crosswalk, the same root-MFA setting gets tested and screenshotted separately for SOC 2 CC6.1, ISO A.8.5, NIST IA-2(1) and CIS 1.5, which wastes time and produces four slightly different answers to one question. With a crosswalk, the team tests once and reuses one piece of evidence for every framework it maps to. It also shows gaps quickly: if a framework requirement has no control mapped to it, that is a hole the team needs to fill before the auditor finds it. Finally, it gives everyone a shared vocabulary, so an engineer who thinks in AWS settings and an auditor who thinks in control IDs can point at the same row and agree on what is being proven.
