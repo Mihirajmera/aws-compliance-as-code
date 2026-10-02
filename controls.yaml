@@ -4,7 +4,7 @@
 #   soc2        - AICPA Trust Services Criteria (2017, rev. 2022)
 #   iso27001    - ISO/IEC 27001:2022 Annex A
 #   cis_aws     - CIS Amazon Web Services Foundations Benchmark v3.0.0
-# An empty list means the framework has no direct equivalent; cis_aws_note explains why.
+# An entry starting with "N/A" means the framework has no direct equivalent and says why.
 
 controls:
   # --- Identity and access ---------------------------------------------------
@@ -108,8 +108,7 @@ controls:
       nist_800_53: [SC-28]
       soc2: [CC6.1]
       iso27001: [A.8.24]
-      cis_aws: []
-    cis_aws_note: "N/A - removed in CIS v2.0; AWS encrypts new buckets by default (SSE-S3)"
+      cis_aws: ["N/A - removed in CIS v2.0; AWS encrypts new buckets by default (SSE-S3)"]
 
   - id: DATA-03
     title: EBS encryption by default is enabled
@@ -130,8 +129,7 @@ controls:
       nist_800_53: [SI-4]
       soc2: [CC7.2]
       iso27001: [A.8.16]
-      cis_aws: []
-    cis_aws_note: "N/A - no GuardDuty control in CIS AWS Foundations v3.0"
+      cis_aws: ["N/A - no GuardDuty control in CIS AWS Foundations v3.0"]
 
   - id: DET-02
     title: Security Hub is enabled
