@@ -60,7 +60,7 @@ controls:
 
   - id: IAM-06
     title: No policies grant full "*:*" administrative privileges
-    check: check_wildcard_admin_policies
+    check: check_no_wildcard_admin
     description: No customer-managed IAM policy may allow Action "*" on Resource "*".
     mappings:
       nist_800_53: [AC-6]

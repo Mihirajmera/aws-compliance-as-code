@@ -28,7 +28,19 @@ aws configure sso --profile pm
 aws sts get-caller-identity --profile pm
 ```
 
-The check runner and tests are being built over the following days; this section will be updated with the run command once they land. Unit tests will run offline against mocked AWS (`moto`) with `pytest`.
+Run every control and print a PASS/FAIL table. Raw API responses are saved as timestamped JSON under `evidence/` (git-ignored, because it contains account details):
+
+```bash
+python run.py --profile pm
+```
+
+Run the unit tests offline against mocked AWS (`moto`), with no account needed:
+
+```bash
+pytest -q
+```
+
+Controls whose check is not written yet show as `NOT_IMPLEMENTED`.
 
 ## Controls
 
