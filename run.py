@@ -1,11 +1,14 @@
-"""Run every control in controls.yaml against an AWS account and print the results.
+"""Run every control in controls.yaml against an AWS account, print the results,
+and write one hashed evidence file per control to evidence/<YYYY-MM-DD>/.
 
     python run.py --profile pm
 """
 import argparse
 import datetime
+import hashlib
 import importlib
 import json
+import os
 import pathlib
 import pkgutil
 
@@ -28,6 +31,26 @@ def load_check_functions():
     return functions
 
 
+def write_evidence(result, account_id):
+    raw = result['raw']
+    body = {
+        'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        'account_id': account_id,
+        'control_id': result['control_id'],
+        'api_call': result['api_call'],
+        'status': result['status'],
+        'findings': result.get('findings', []),
+        'raw': raw,
+        # SHA-256 of raw as canonical JSON (sorted keys, no whitespace) so edits are detectable.
+        'sha256': hashlib.sha256(json.dumps(raw, sort_keys=True, separators=(',', ':'), default=str).encode()).hexdigest(),
+    }
+    d = f"evidence/{body['timestamp'][:10]}"
+    os.makedirs(d, exist_ok=True)
+    with open(f"{d}/{result['control_id']}.json", 'w') as f:
+        json.dump(body, f, indent=2, default=str)
+    return f"{d}/{result['control_id']}.json"
+
+
 def run(session, controls):
     functions = load_check_functions()
     results = []
@@ -48,11 +71,11 @@ def main():
     parser.add_argument('--profile', help='AWS CLI profile name')
     parser.add_argument('--region', default='us-east-1')
     parser.add_argument('--controls', default=str(ROOT / 'controls.yaml'))
-    parser.add_argument('--evidence-dir', default=str(ROOT / 'evidence'))
     args = parser.parse_args()
 
     controls = yaml.safe_load(open(args.controls))['controls']
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
+    account_id = session.client('sts').get_caller_identity()['Account']
     results = run(session, controls)
 
     titles = {c['id']: c['title'] for c in controls}
@@ -62,11 +85,9 @@ def main():
         for finding in r.get('findings', []):
             print(f"{'':<9} - {finding}")
 
-    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-    out = pathlib.Path(args.evidence_dir) / f'{timestamp}.json'
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps({'collected_at': timestamp, 'results': results}, indent=2, default=str))
-    print(f'\nEvidence written to {out}')
+    os.chdir(ROOT)  # evidence/ always lands in the repo, wherever run.py is called from
+    written = [write_evidence(r, account_id) for r in results if 'raw' in r]
+    print(f"\nWrote {len(written)} evidence files to {os.path.dirname(written[0]) if written else 'evidence/'}")
 
 
 if __name__ == '__main__':

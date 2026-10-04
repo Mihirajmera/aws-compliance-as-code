@@ -28,7 +28,7 @@ aws configure sso --profile pm
 aws sts get-caller-identity --profile pm
 ```
 
-Run every control and print a PASS/FAIL table. Raw API responses are saved as timestamped JSON under `evidence/` (git-ignored, because it contains account details):
+Run every control and print a PASS/FAIL table. Each control writes one evidence file to `evidence/<YYYY-MM-DD>/<CONTROL-ID>.json` with a timestamp, the account ID, the API call, the raw response and a SHA-256 of the raw response (canonical JSON: sorted keys, no spaces), so any edit is detectable:
 
 ```bash
 python run.py --profile pm
