@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  GitHub Actions OIDC provider and the read-only pm-github-audit role, trusted only by
+  the main branch of Mihirajmera/aws-compliance-as-code.
+
+Parameters:
+  Repo:
+    Type: String
+    Default: Mihirajmera/aws-compliance-as-code
+  Branch:
+    Type: String
+    Default: main
+
+Resources:
+  GitHubOidcProvider:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: [sts.amazonaws.com]
+
+  AuditRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: pm-github-audit
+      Description: Read-only role assumed by the nightly compliance workflow
+      MaxSessionDuration: 3600
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/SecurityAudit
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Ref GitHubOidcProvider
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: !Sub repo:${Repo}:ref:refs/heads/${Branch}
+
+Outputs:
+  RoleArn:
+    Description: Set this as the AWS_ROLE_ARN repository variable
+    Value: !GetAtt AuditRole.Arn

@@ -1,0 +1,48 @@
+name: Nightly compliance evidence
+
+on:
+  schedule: [{cron: '30 3 * * *'}]   # 03:30 UTC every day
+  workflow_dispatch: {}
+
+permissions: {id-token: write, contents: write}
+
+concurrency: nightly-evidence
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install runtime dependencies
+        run: pip install boto3 pyyaml
+
+      # Short-lived credentials via OIDC; no AWS keys are stored in GitHub.
+      # AWS_ROLE_ARN is a repository variable (Settings -> Secrets and variables -> Actions -> Variables).
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          role-session-name: nightly-evidence
+          aws-region: us-east-1
+
+      - name: Run checks and write hashed evidence
+        run: python run.py
+
+      - name: Export OSCAL assessment results
+        run: python oscal_export.py
+
+      - name: Commit evidence and OSCAL output
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add evidence oscal
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+          else
+            git commit -m "evidence: nightly run $(date -u +%F)"
+            git push
+          fi
