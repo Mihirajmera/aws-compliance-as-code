@@ -1,3 +1,7 @@
 .venv/
 __pycache__/
 .pytest_cache/
+
+# Local run output (contains account IDs)
+evidence/
+oscal/

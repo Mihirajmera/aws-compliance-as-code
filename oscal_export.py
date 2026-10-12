@@ -71,7 +71,7 @@ def build_assessment_results(evidence_dir, controls, root=ROOT):
     return {'assessment-results': {
         'uuid': _uuid(),
         'metadata': {
-            'title': 'AWS sandbox control assessment',
+            'title': 'AWS control assessment',
             'last-modified': now,
             'version': '1.0',
             'oscal-version': '1.1.2',
@@ -79,7 +79,7 @@ def build_assessment_results(evidence_dir, controls, root=ROOT):
         'import-ap': {'href': '#'},
         'results': [{
             'uuid': _uuid(),
-            'title': 'Nightly run',
+            'title': 'Automated control assessment',
             'description': f'Automated checks from {evidence_dir.as_posix()}',
             'start': min((o['collected'] for o in observations), default=now),
             'end': max((o['collected'] for o in observations), default=now),
