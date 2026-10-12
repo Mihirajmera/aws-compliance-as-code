@@ -1,5 +1,7 @@
 # aws-compliance-as-code
 
+[![Tests](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/tests.yml/badge.svg)](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/tests.yml)
+
 Automated, repeatable compliance evidence for an AWS account, mapped to NIST 800-53, SOC 2, ISO 27001 and the CIS AWS Foundations Benchmark, and exported as OSCAL.
 
 ## Problem

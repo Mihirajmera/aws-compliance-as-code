@@ -1,0 +1,26 @@
+name: Tests
+
+on:
+  push: {branches: [main]}
+  pull_request: {}
+  workflow_dispatch: {}
+
+permissions: {contents: read}
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Checks run against moto's mocked AWS, so no credentials are needed.
+      - name: Run tests
+        run: pytest -q

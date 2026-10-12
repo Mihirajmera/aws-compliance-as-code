@@ -9,12 +9,21 @@ permissions: {id-token: write, contents: write}
 concurrency: nightly-evidence
 
 jobs:
-  collect:
+  # Without AWS_ROLE_ARN there is no role to assume, so report that instead of
+  # failing every night. Deploy infra/github-oidc.yaml and set the variable to enable collection.
+  not-configured:
+    if: ${{ vars.AWS_ROLE_ARN == '' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - run: echo "::warning title=Evidence collection disabled::AWS_ROLE_ARN repository variable is not set. See 'Run it nightly' in README.md."
 
-      - uses: actions/setup-python@v5
+  collect:
+    if: ${{ vars.AWS_ROLE_ARN != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -23,7 +32,7 @@ jobs:
 
       # Short-lived credentials via OIDC; no AWS keys are stored in GitHub.
       # AWS_ROLE_ARN is a repository variable (Settings -> Secrets and variables -> Actions -> Variables).
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           role-session-name: nightly-evidence
