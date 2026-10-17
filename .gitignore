@@ -5,3 +5,6 @@ __pycache__/
 # Local run output (contains account IDs)
 evidence/
 oscal/
+
+# local virtual environments
+.venv*/

@@ -1,26 +1,39 @@
-name: Tests
+name: Python CI
 
 on:
-  push: {branches: [main]}
-  pull_request: {}
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
   workflow_dispatch: {}
 
-permissions: {contents: read}
+permissions:
+  contents: read
 
 jobs:
-  pytest:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.11'
           cache: pip
 
+      # Every dependency is pinned by version and hash (see requirements.in).
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install --require-hashes -r requirements.txt
 
-      # Checks run against moto's mocked AWS, so no credentials are needed.
+      - name: Lint (syntax errors and undefined names fail the build)
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Security scan with Bandit
+        run: bandit -r checks run.py oscal_export.py -ll
+
       - name: Run tests
-        run: pytest -q
+        run: python -m pytest -q

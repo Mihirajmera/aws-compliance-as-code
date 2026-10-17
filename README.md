@@ -1,6 +1,9 @@
 # aws-compliance-as-code
 
 [![Tests](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/tests.yml/badge.svg)](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/tests.yml)
+[![CodeQL](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/codeql.yml/badge.svg)](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Mihirajmera/aws-compliance-as-code/badge)](https://scorecard.dev/viewer/?uri=github.com/Mihirajmera/aws-compliance-as-code)
+[![Release](https://img.shields.io/github/v/release/Mihirajmera/aws-compliance-as-code?color=0891b2)](https://github.com/Mihirajmera/aws-compliance-as-code/releases)
 
 Automated, repeatable compliance evidence for an AWS account, mapped to NIST 800-53, SOC 2, ISO 27001 and the CIS AWS Foundations Benchmark, and exported as OSCAL.
 

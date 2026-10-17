@@ -1,0 +1,9 @@
+# Direct dependencies for development and CI. Edit this file, then regenerate the
+# hash-locked requirements.txt with:
+#   uv pip compile requirements.in --universal --generate-hashes --python-version 3.11 --exclude-newer 2026-10-03 -o requirements.txt
+boto3
+pyyaml
+pytest
+moto[all]
+flake8
+bandit
