@@ -1,0 +1,25 @@
+{
+  "account_id": "123456789012",
+  "api_call": "cloudtrail:DescribeTrails",
+  "control_id": "LOG-02",
+  "findings": [
+    "acme-audit: log file validation is off"
+  ],
+  "raw": [
+    {
+      "HasCustomEventSelectors": false,
+      "HasInsightSelectors": false,
+      "HomeRegion": "us-east-1",
+      "IncludeGlobalServiceEvents": true,
+      "IsMultiRegionTrail": false,
+      "IsOrganizationTrail": false,
+      "LogFileValidationEnabled": false,
+      "Name": "acme-audit",
+      "S3BucketName": "acme-cloudtrail-logs",
+      "TrailARN": "arn:aws:cloudtrail:us-east-1:123456789012:trail/acme-audit"
+    }
+  ],
+  "sha256": "f6e47f47de29eb131e8e5dda3034c9b9fc0c299c3758f0f8cf0dda35231d9d21",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

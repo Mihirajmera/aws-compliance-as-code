@@ -4,8 +4,16 @@
 [![CodeQL](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/codeql.yml/badge.svg)](https://github.com/Mihirajmera/aws-compliance-as-code/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Mihirajmera/aws-compliance-as-code/badge)](https://scorecard.dev/viewer/?uri=github.com/Mihirajmera/aws-compliance-as-code)
 [![Release](https://img.shields.io/github/v/release/Mihirajmera/aws-compliance-as-code?color=0891b2)](https://github.com/Mihirajmera/aws-compliance-as-code/releases)
+[![PyPI](https://img.shields.io/pypi/v/aws-compliance-as-code)](https://pypi.org/project/aws-compliance-as-code/)
 
 Automated, repeatable compliance evidence for an AWS account, mapped to NIST 800-53, SOC 2, ISO 27001 and the CIS AWS Foundations Benchmark, and exported as OSCAL.
+
+```bash
+pip install "aws-compliance-as-code[demo]"
+aws-compliance-as-code demo        # a fake, misconfigured account; no AWS needed
+```
+
+**→ [Read the sample report](sample-output/report.md)** (no install needed): 15 controls run against a deliberately drifted sandbox account built with moto: root without MFA, a `*:*` break-glass policy, a single-region trail without log validation, partial S3 Block Public Access and more, each with [hashed evidence](sample-output/evidence/IAM-06.json) and [OSCAL](sample-output/oscal/assessment-results.json).
 
 ## Problem
 
@@ -50,18 +58,15 @@ Framework versions: NIST SP 800-53 Rev. 5, AICPA TSC 2017 (rev. 2022), ISO/IEC 2
 Requirements: Python 3.11+, the AWS CLI v2, and a read-only profile (`SecurityAudit` + `ReadOnlyAccess`).
 
 ```bash
-git clone https://github.com/Mihirajmera/aws-compliance-as-code.git
-cd aws-compliance-as-code
-python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
+pip install aws-compliance-as-code
 aws configure sso --profile pm
-python run.py --profile pm        # PASS/FAIL table + evidence/<today>/*.json
-python oscal_export.py            # oscal/assessment-results.json
-pytest -q                         # offline unit tests against mocked AWS (moto)
+aws-compliance-as-code scan --profile pm          # PASS/FAIL table + evidence/<today>/*.json
+aws-compliance-as-code oscal evidence/<today>     # oscal/assessment-results.json
 ```
 
-No AWS account? `pytest -q` exercises every check against mocked AWS, with no credentials needed.
+From a clone, `python run.py --profile pm` and `python oscal_export.py` still work, and `pytest -q` runs every check offline against mocked AWS (moto).
+
+No AWS account? `aws-compliance-as-code demo` (with the `[demo]` extra) builds a misconfigured fake account and runs every check against it.
 
 ## What I'd do at enterprise scale
 

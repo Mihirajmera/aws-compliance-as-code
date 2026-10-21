@@ -7,3 +7,4 @@ pytest
 moto[all]
 flake8
 bandit
+setuptools

@@ -1,0 +1,39 @@
+{
+  "account_id": "123456789012",
+  "api_call": "iam:ListPolicies, iam:GetPolicyVersion",
+  "control_id": "IAM-06",
+  "findings": [
+    "BreakGlassAdmin allows Action '*' on Resource '*'"
+  ],
+  "raw": [
+    {
+      "Document": {
+        "Statement": [
+          {
+            "Action": "*",
+            "Effect": "Allow",
+            "Resource": "*"
+          }
+        ],
+        "Version": "2012-10-17"
+      },
+      "PolicyArn": "arn:aws:iam::123456789012:policy/BreakGlassAdmin"
+    },
+    {
+      "Document": {
+        "Statement": [
+          {
+            "Action": "s3:PutObject",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::acme-app-artifacts/*"
+          }
+        ],
+        "Version": "2012-10-17"
+      },
+      "PolicyArn": "arn:aws:iam::123456789012:policy/DeployToS3"
+    }
+  ],
+  "sha256": "74716e37a35b598d47af9a98d9765ac7ad08a627e025a989ebb89b862f59b1e4",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

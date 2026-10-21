@@ -1,0 +1,750 @@
+{
+  "assessment-results": {
+    "uuid": "2b02885a-6ebe-56fe-88ef-daa5e5f6612d",
+    "metadata": {
+      "title": "AWS control assessment",
+      "last-modified": "2026-10-21T00:00:00+00:00",
+      "version": "1.0",
+      "oscal-version": "1.1.2"
+    },
+    "import-ap": {
+      "href": "#"
+    },
+    "results": [
+      {
+        "uuid": "d598f326-958b-5a51-9e54-93e69d7d7bdb",
+        "title": "Automated control assessment",
+        "description": "Automated checks from sample-output/evidence",
+        "start": "2026-10-21T00:00:00+00:00",
+        "end": "2026-10-21T00:00:00+00:00",
+        "reviewed-controls": {
+          "control-selections": [
+            {
+              "include-controls": [
+                {
+                  "control-id": "ac-2"
+                },
+                {
+                  "control-id": "ac-2.3"
+                },
+                {
+                  "control-id": "ac-3"
+                },
+                {
+                  "control-id": "ac-6"
+                },
+                {
+                  "control-id": "ac-6.2"
+                },
+                {
+                  "control-id": "au-12"
+                },
+                {
+                  "control-id": "au-2"
+                },
+                {
+                  "control-id": "au-9"
+                },
+                {
+                  "control-id": "ca-7"
+                },
+                {
+                  "control-id": "ia-2"
+                },
+                {
+                  "control-id": "ia-2.1"
+                },
+                {
+                  "control-id": "ia-5.1"
+                },
+                {
+                  "control-id": "sc-28"
+                },
+                {
+                  "control-id": "sc-7"
+                },
+                {
+                  "control-id": "si-4"
+                }
+              ]
+            }
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "0f473bd0-be6e-55c4-a54f-ed4772cac22a",
+            "title": "DATA-01",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "s3control:GetPublicAccessBlock"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/DATA-01.json",
+                "description": "sha256 46fdf4ab1c1d4034f0df882b19a43f9c514538d4dd0a9d0774143413ae214506"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "4cda88d3-f67f-5329-b40f-91f8f910a68d",
+            "title": "DATA-02",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "s3:ListBuckets, s3:GetBucketEncryption"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/DATA-02.json",
+                "description": "sha256 8ab74ce0a474a23c4d158fcef690ec8afcb7dab819e3d516f75129e19554def8"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "1a74e4c8-8d3b-50f0-a5a3-e34decb2ad7b",
+            "title": "DATA-03",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "ec2:GetEbsEncryptionByDefault"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/DATA-03.json",
+                "description": "sha256 3bd0802876499d67c69d7a092da0ece848969b0f1bc586689ab469c13c9eb358"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "d1abe0f3-eb15-5475-96a4-e897bf6a7f3f",
+            "title": "DET-01",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "guardduty:ListDetectors, guardduty:GetDetector"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/DET-01.json",
+                "description": "sha256 7aa8d65e12cd4c2a12b7ac62fbbc23605516cfd490a892c207b49243ec2f17a1"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "5aff9ef3-d972-5f61-b245-2c534911bf30",
+            "title": "DET-02",
+            "description": "PASS",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "securityhub:DescribeHub"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/DET-02.json",
+                "description": "sha256 768c8592970a63333d435fe3086477c8024c0098a41f429989601f492a040be4"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "2cdc862e-e45a-585e-88d1-7f017876fa63",
+            "title": "IAM-01",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "iam:GetAccountSummary"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/IAM-01.json",
+                "description": "sha256 ce5ebd592ec017e0b7f4a0d31015f048df528e0680589b28fb756e1676c197e6"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "dfadb5a4-910b-545e-a62f-316c7bb691ce",
+            "title": "IAM-02",
+            "description": "PASS",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "iam:GetAccountSummary"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/IAM-02.json",
+                "description": "sha256 ce5ebd592ec017e0b7f4a0d31015f048df528e0680589b28fb756e1676c197e6"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "e767bb56-db9d-5b5e-b3a2-544d8ca6039c",
+            "title": "IAM-03",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "iam:GetAccountPasswordPolicy"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/IAM-03.json",
+                "description": "sha256 eafd1b626f7a9100dce0baff4eb19a473e5cdf3c9bb461706b07ce7500bf8454"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "8ede6bbe-b3a2-5775-b263-f495aeb143c6",
+            "title": "IAM-04",
+            "description": "PASS",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "iam:ListUsers, iam:ListAccessKeys"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/IAM-04.json",
+                "description": "sha256 7640f8ec08adb440a2119c88d2484f0c2c90de5accefe393913104915d3ac4e7"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "f0f0919b-4bb8-5966-80e3-1be37e810713",
+            "title": "IAM-05",
+            "description": "PASS",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "iam:GenerateCredentialReport, iam:GetCredentialReport"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/IAM-05.json",
+                "description": "sha256 1fd1870b1e1609bbed804bc0f25290127609c476dfb6c221c4f29bee12de7893"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "023a71a9-2c0b-5623-962b-ac733b052530",
+            "title": "IAM-06",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "iam:ListPolicies, iam:GetPolicyVersion"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/IAM-06.json",
+                "description": "sha256 74716e37a35b598d47af9a98d9765ac7ad08a627e025a989ebb89b862f59b1e4"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "00cf1d31-0b81-53d3-b72e-c5143bce9486",
+            "title": "LOG-01",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "cloudtrail:DescribeTrails, cloudtrail:GetTrailStatus"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/LOG-01.json",
+                "description": "sha256 e4f521fad348b42742aecb0b2dfaac14412bf681862d8d09f0d95a4257729d04"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          },
+          {
+            "uuid": "a0a6a6c4-4205-5e92-b869-e33c19313287",
+            "title": "LOG-02",
+            "description": "FAIL",
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "props": [
+              {
+                "name": "api-call",
+                "value": "cloudtrail:DescribeTrails"
+              },
+              {
+                "name": "account-id",
+                "value": "123456789012"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "evidence/LOG-02.json",
+                "description": "sha256 f6e47f47de29eb131e8e5dda3034c9b9fc0c299c3758f0f8cf0dda35231d9d21"
+              }
+            ],
+            "collected": "2026-10-21T00:00:00+00:00"
+          }
+        ],
+        "findings": [
+          {
+            "uuid": "104c4c56-97e6-53d3-a9f5-5463169a97c6",
+            "title": "DATA-01 -> AC-3",
+            "description": "S3 Block Public Access is enabled at the account level",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-3_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "0f473bd0-be6e-55c4-a54f-ed4772cac22a"
+              }
+            ]
+          },
+          {
+            "uuid": "b00181ee-0e0c-5038-ae79-74d37f96fe9d",
+            "title": "DATA-01 -> SC-7",
+            "description": "S3 Block Public Access is enabled at the account level",
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-7_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "0f473bd0-be6e-55c4-a54f-ed4772cac22a"
+              }
+            ]
+          },
+          {
+            "uuid": "03e36535-57e2-5904-8838-1c2e42ab72a1",
+            "title": "DATA-02 -> SC-28",
+            "description": "S3 buckets have default encryption configured",
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-28_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "4cda88d3-f67f-5329-b40f-91f8f910a68d"
+              }
+            ]
+          },
+          {
+            "uuid": "baf2d89a-e6e1-5cd9-b110-a4c9daac09ce",
+            "title": "DATA-03 -> SC-28",
+            "description": "EBS encryption by default is enabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-28_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "1a74e4c8-8d3b-50f0-a5a3-e34decb2ad7b"
+              }
+            ]
+          },
+          {
+            "uuid": "83c15f71-39a1-5bf7-bee1-4eed63bee2ce",
+            "title": "DET-01 -> SI-4",
+            "description": "GuardDuty is enabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "si-4_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "d1abe0f3-eb15-5475-96a4-e897bf6a7f3f"
+              }
+            ]
+          },
+          {
+            "uuid": "e4e89fce-80c8-5077-a7e7-821713b575d3",
+            "title": "DET-02 -> CA-7",
+            "description": "Security Hub is enabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ca-7_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "5aff9ef3-d972-5f61-b245-2c534911bf30"
+              }
+            ]
+          },
+          {
+            "uuid": "869a6f88-7964-521c-89b1-99b03e0ecae5",
+            "title": "DET-02 -> SI-4",
+            "description": "Security Hub is enabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "si-4_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "5aff9ef3-d972-5f61-b245-2c534911bf30"
+              }
+            ]
+          },
+          {
+            "uuid": "cc9869bd-c5b0-593e-8704-6f79353a0717",
+            "title": "IAM-01 -> IA-2(1)",
+            "description": "Root account has MFA enabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ia-2.1_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "2cdc862e-e45a-585e-88d1-7f017876fa63"
+              }
+            ]
+          },
+          {
+            "uuid": "0e9f2002-4220-522a-89f7-b654b7647636",
+            "title": "IAM-02 -> AC-6(2)",
+            "description": "Root account has no access keys",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-6.2_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "dfadb5a4-910b-545e-a62f-316c7bb691ce"
+              }
+            ]
+          },
+          {
+            "uuid": "abfa6c26-90aa-5b33-b79b-90b2c2529cba",
+            "title": "IAM-02 -> IA-2",
+            "description": "Root account has no access keys",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ia-2_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "dfadb5a4-910b-545e-a62f-316c7bb691ce"
+              }
+            ]
+          },
+          {
+            "uuid": "b49f7e37-cb81-5243-9065-ed17996c4ca4",
+            "title": "IAM-03 -> IA-5(1)",
+            "description": "IAM password policy meets minimum strength",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ia-5.1_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "e767bb56-db9d-5b5e-b3a2-544d8ca6039c"
+              }
+            ]
+          },
+          {
+            "uuid": "6c3b6756-c8c3-584c-b7c1-69d92c347a16",
+            "title": "IAM-04 -> IA-5(1)",
+            "description": "Access keys are rotated within 90 days",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ia-5.1_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "8ede6bbe-b3a2-5775-b263-f495aeb143c6"
+              }
+            ]
+          },
+          {
+            "uuid": "28faaa8a-0404-556f-850d-12adee8a84b1",
+            "title": "IAM-04 -> AC-2",
+            "description": "Access keys are rotated within 90 days",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-2_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "8ede6bbe-b3a2-5775-b263-f495aeb143c6"
+              }
+            ]
+          },
+          {
+            "uuid": "d574e0b2-fc38-5d5f-a56f-72dc7e7b2957",
+            "title": "IAM-05 -> AC-2(3)",
+            "description": "Unused credentials are disabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-2.3_obj",
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "f0f0919b-4bb8-5966-80e3-1be37e810713"
+              }
+            ]
+          },
+          {
+            "uuid": "607fdd5d-948d-5067-953f-eb4059210add",
+            "title": "IAM-06 -> AC-6",
+            "description": "No policies grant full \"*:*\" administrative privileges",
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-6_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "023a71a9-2c0b-5623-962b-ac733b052530"
+              }
+            ]
+          },
+          {
+            "uuid": "5cf276e6-46a6-5dae-9660-89a1c13d05a8",
+            "title": "LOG-01 -> AU-2",
+            "description": "CloudTrail is enabled in all regions",
+            "target": {
+              "type": "objective-id",
+              "target-id": "au-2_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "00cf1d31-0b81-53d3-b72e-c5143bce9486"
+              }
+            ]
+          },
+          {
+            "uuid": "35ac17d1-4fbe-5e95-b46e-4dbd4f52684d",
+            "title": "LOG-01 -> AU-12",
+            "description": "CloudTrail is enabled in all regions",
+            "target": {
+              "type": "objective-id",
+              "target-id": "au-12_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "00cf1d31-0b81-53d3-b72e-c5143bce9486"
+              }
+            ]
+          },
+          {
+            "uuid": "c1ee3028-eecd-5945-95d6-0cd9e78990ab",
+            "title": "LOG-02 -> AU-9",
+            "description": "CloudTrail log file validation is enabled",
+            "target": {
+              "type": "objective-id",
+              "target-id": "au-9_obj",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "a0a6a6c4-4205-5e92-b869-e33c19313287"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

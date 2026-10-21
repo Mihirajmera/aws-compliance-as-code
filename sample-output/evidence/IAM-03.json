@@ -1,0 +1,23 @@
+{
+  "account_id": "123456789012",
+  "api_call": "iam:GetAccountPasswordPolicy",
+  "control_id": "IAM-03",
+  "findings": [
+    "MinimumPasswordLength 8 < 14",
+    "PasswordReusePrevention None < 24"
+  ],
+  "raw": {
+    "AllowUsersToChangePassword": false,
+    "ExpirePasswords": false,
+    "HardExpiry": false,
+    "MaxPasswordAge": 0,
+    "MinimumPasswordLength": 8,
+    "RequireLowercaseCharacters": false,
+    "RequireNumbers": false,
+    "RequireSymbols": false,
+    "RequireUppercaseCharacters": false
+  },
+  "sha256": "eafd1b626f7a9100dce0baff4eb19a473e5cdf3c9bb461706b07ce7500bf8454",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

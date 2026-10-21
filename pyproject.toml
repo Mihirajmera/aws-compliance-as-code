@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws-compliance-as-code"
+version = "1.1.0"
+description = "Read-only AWS control checks mapped to NIST 800-53, SOC 2, ISO 27001 and CIS, with hashed evidence and OSCAL output."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Mihir Ajmera" }]
+requires-python = ">=3.11"
+dependencies = ["boto3>=1.34,<2", "pyyaml>=6.0,<7"]
+keywords = ["compliance-as-code", "aws", "nist-800-53", "soc2", "iso27001", "cis", "oscal", "audit-evidence", "grc"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Intended Audience :: Information Technology",
+]
+
+[project.optional-dependencies]
+demo = ["moto>=5,<6"]
+
+[project.urls]
+Homepage = "https://github.com/Mihirajmera/aws-compliance-as-code"
+Issues = "https://github.com/Mihirajmera/aws-compliance-as-code/issues"
+
+[project.scripts]
+aws-compliance-as-code = "aws_compliance_as_code.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["aws_compliance_as_code*"]
+
+[tool.setuptools.package-data]
+aws_compliance_as_code = ["controls.yaml"]

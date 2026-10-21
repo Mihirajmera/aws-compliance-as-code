@@ -1,0 +1,17 @@
+{
+  "account_id": "123456789012",
+  "api_call": "guardduty:ListDetectors, guardduty:GetDetector",
+  "control_id": "DET-01",
+  "findings": [
+    "eu-west-1: no enabled GuardDuty detector"
+  ],
+  "raw": {
+    "eu-west-1": {},
+    "us-east-1": {
+      "9a7faf16e9bcd5e06d9705a3c7e88e08": "ENABLED"
+    }
+  },
+  "sha256": "7aa8d65e12cd4c2a12b7ac62fbbc23605516cfd490a892c207b49243ec2f17a1",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

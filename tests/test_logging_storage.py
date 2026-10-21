@@ -2,7 +2,7 @@ import boto3
 import pytest
 from moto import mock_aws
 
-from checks.logging_storage import (check_cloudtrail_log_validation, check_cloudtrail_multi_region,
+from aws_compliance_as_code.checks.logging_storage import (check_cloudtrail_log_validation, check_cloudtrail_multi_region,
                                     check_ebs_default_encryption, check_guardduty_enabled,
                                     check_s3_account_public_access_block, check_s3_default_encryption,
                                     check_securityhub_enabled)

@@ -33,7 +33,20 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Security scan with Bandit
-        run: bandit -r checks run.py oscal_export.py -ll
+        run: bandit -r aws_compliance_as_code run.py oscal_export.py -ll
+
+      - name: Install the package
+        run: pip install --no-deps --no-build-isolation .
 
       - name: Run tests
         run: python -m pytest -q
+
+      # The demo builds a misconfigured fake account with moto and writes evidence, OSCAL and a
+      # report; the statuses must match the committed sample (IDs and timestamps from moto vary).
+      - name: Demo matches the committed sample
+        env:
+          SOURCE_DATE_EPOCH: '1792540800'
+        run: |
+          aws-compliance-as-code demo --out /tmp/demo
+          diff <(grep -h '"status"' /tmp/demo/evidence/*.json) <(grep -h '"status"' sample-output/evidence/*.json)
+          diff /tmp/demo/report.md sample-output/report.md

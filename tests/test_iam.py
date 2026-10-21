@@ -5,7 +5,7 @@ import boto3
 import pytest
 from moto import mock_aws
 
-from checks.iam import (check_access_key_age, check_no_wildcard_admin, check_password_policy,
+from aws_compliance_as_code.checks.iam import (check_access_key_age, check_no_wildcard_admin, check_password_policy,
                         check_root_access_keys, check_root_mfa, check_unused_credentials)
 
 

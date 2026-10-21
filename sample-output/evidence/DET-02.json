@@ -1,0 +1,23 @@
+{
+  "account_id": "123456789012",
+  "api_call": "securityhub:DescribeHub",
+  "control_id": "DET-02",
+  "findings": [],
+  "raw": {
+    "eu-west-1": {
+      "AutoEnableControls": true,
+      "ControlFindingGenerator": "SECURITY_CONTROL",
+      "HubArn": "arn:aws:securityhub:eu-west-1:123456789012:hub/default",
+      "SubscribedAt": "2026-10-21T18:13:11.109380+00:00"
+    },
+    "us-east-1": {
+      "AutoEnableControls": true,
+      "ControlFindingGenerator": "SECURITY_CONTROL",
+      "HubArn": "arn:aws:securityhub:us-east-1:123456789012:hub/default",
+      "SubscribedAt": "2026-10-21T18:13:11.104373+00:00"
+    }
+  },
+  "sha256": "768c8592970a63333d435fe3086477c8024c0098a41f429989601f492a040be4",
+  "status": "PASS",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

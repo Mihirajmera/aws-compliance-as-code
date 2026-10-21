@@ -1,0 +1,26 @@
+{
+  "account_id": "123456789012",
+  "api_call": "cloudtrail:DescribeTrails, cloudtrail:GetTrailStatus",
+  "control_id": "LOG-01",
+  "findings": [
+    "No multi-region trail is currently logging"
+  ],
+  "raw": [
+    {
+      "HasCustomEventSelectors": false,
+      "HasInsightSelectors": false,
+      "HomeRegion": "us-east-1",
+      "IncludeGlobalServiceEvents": true,
+      "IsLogging": true,
+      "IsMultiRegionTrail": false,
+      "IsOrganizationTrail": false,
+      "LogFileValidationEnabled": false,
+      "Name": "acme-audit",
+      "S3BucketName": "acme-cloudtrail-logs",
+      "TrailARN": "arn:aws:cloudtrail:us-east-1:123456789012:trail/acme-audit"
+    }
+  ],
+  "sha256": "e4f521fad348b42742aecb0b2dfaac14412bf681862d8d09f0d95a4257729d04",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}
