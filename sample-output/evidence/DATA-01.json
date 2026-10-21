@@ -1,0 +1,18 @@
+{
+  "account_id": "123456789012",
+  "api_call": "s3control:GetPublicAccessBlock",
+  "control_id": "DATA-01",
+  "findings": [
+    "BlockPublicPolicy is false",
+    "RestrictPublicBuckets is false"
+  ],
+  "raw": {
+    "BlockPublicAcls": true,
+    "BlockPublicPolicy": false,
+    "IgnorePublicAcls": true,
+    "RestrictPublicBuckets": false
+  },
+  "sha256": "46fdf4ab1c1d4034f0df882b19a43f9c514538d4dd0a9d0774143413ae214506",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

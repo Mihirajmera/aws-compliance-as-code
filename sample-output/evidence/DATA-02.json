@@ -1,0 +1,34 @@
+{
+  "account_id": "123456789012",
+  "api_call": "s3:ListBuckets, s3:GetBucketEncryption",
+  "control_id": "DATA-02",
+  "findings": [
+    "acme-customer-exports: no default encryption"
+  ],
+  "raw": {
+    "acme-app-artifacts": {
+      "Rules": [
+        {
+          "ApplyServerSideEncryptionByDefault": {
+            "SSEAlgorithm": "AES256"
+          },
+          "BucketKeyEnabled": false
+        }
+      ]
+    },
+    "acme-cloudtrail-logs": {
+      "Rules": [
+        {
+          "ApplyServerSideEncryptionByDefault": {
+            "SSEAlgorithm": "AES256"
+          },
+          "BucketKeyEnabled": false
+        }
+      ]
+    },
+    "acme-customer-exports": null
+  },
+  "sha256": "8ab74ce0a474a23c4d158fcef690ec8afcb7dab819e3d516f75129e19554def8",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

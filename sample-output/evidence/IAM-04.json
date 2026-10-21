@@ -1,0 +1,17 @@
+{
+  "account_id": "123456789012",
+  "api_call": "iam:ListUsers, iam:ListAccessKeys",
+  "control_id": "IAM-04",
+  "findings": [],
+  "raw": [
+    {
+      "AccessKeyId": "AKIARZPUZDIKIF2TSE7V",
+      "CreateDate": "2026-10-21 18:13:09.504018+00:00",
+      "Status": "Active",
+      "UserName": "ci-deploy"
+    }
+  ],
+  "sha256": "7640f8ec08adb440a2119c88d2484f0c2c90de5accefe393913104915d3ac4e7",
+  "status": "PASS",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}

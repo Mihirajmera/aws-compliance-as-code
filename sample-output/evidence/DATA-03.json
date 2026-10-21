@@ -1,0 +1,15 @@
+{
+  "account_id": "123456789012",
+  "api_call": "ec2:GetEbsEncryptionByDefault",
+  "control_id": "DATA-03",
+  "findings": [
+    "eu-west-1: EBS encryption by default is off"
+  ],
+  "raw": {
+    "eu-west-1": false,
+    "us-east-1": true
+  },
+  "sha256": "3bd0802876499d67c69d7a092da0ece848969b0f1bc586689ab469c13c9eb358",
+  "status": "FAIL",
+  "timestamp": "2026-10-21T00:00:00+00:00"
+}
