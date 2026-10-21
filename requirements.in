@@ -8,3 +8,7 @@ moto[all]
 flake8
 bandit
 setuptools
+
+# Security floors (Dependabot alerts, 2026-10-21). Newer than the two-week cutoff on purpose;
+# regenerate with: --exclude-newer-package certifi=2026-10-21
+certifi>=2026.10.19
