@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 (unreleased)
+## 1.1.0 (2026-10-21)
 
 - Installable package with an `aws-compliance-as-code` command (`scan`, `oscal`, `demo`), published to PyPI with trusted publishing and SLSA provenance. `run.py` and `oscal_export.py` still work from a clone.
 - `demo` runs every check against a deliberately misconfigured fake account (moto) and writes hashed evidence, OSCAL and a report; [`sample-output/`](sample-output) is the committed result and CI checks it.
