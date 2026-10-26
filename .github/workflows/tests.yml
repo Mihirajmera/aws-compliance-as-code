@@ -35,8 +35,12 @@ jobs:
       - name: Security scan with Bandit
         run: bandit -r aws_compliance_as_code run.py oscal_export.py -ll
 
+      # Build the wheel with the hash-locked setuptools, then install that file, so nothing is
+      # fetched unpinned.
       - name: Install the package
-        run: pip install --no-deps --no-build-isolation .
+        run: |
+          python -c "from setuptools import build_meta as b; b.build_wheel('dist')"
+          pip install --no-deps dist/*.whl
 
       - name: Run tests
         run: python -m pytest -q
