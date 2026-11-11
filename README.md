@@ -15,6 +15,8 @@ aws-compliance-as-code demo        # a fake, misconfigured account; no AWS neede
 
 **→ [Read the sample report](sample-output/report.md)** (no install needed): 15 controls run against a deliberately drifted sandbox account built with moto: root without MFA, a `*:*` break-glass policy, a single-region trail without log validation, partial S3 Block Public Access and more, each with [hashed evidence](sample-output/evidence/IAM-06.json) and [OSCAL](sample-output/oscal/assessment-results.json).
 
+[![The sample report this tool produces, from sample-output/report.md](docs/report.png)](sample-output/report.md)
+
 ## Problem
 
 Audit evidence is still mostly collected by hand. Someone logs into the console, takes screenshots of the IAM password policy, exports a CloudTrail config, pastes it into a spreadsheet, and repeats the whole thing next quarter for a different framework. It is slow, it only proves the state of the account on the day the screenshot was taken, nobody can tell whether a screenshot was edited, and the same AWS setting gets re-collected separately for SOC 2, ISO and NIST even though it is one fact.
