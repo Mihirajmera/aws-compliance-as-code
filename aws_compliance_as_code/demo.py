@@ -81,6 +81,11 @@ def run_demo(out):
     return results, controls
 
 
+def _cell(text):
+    """Escape characters Markdown would read as emphasis or a column break (e.g. Action '*')."""
+    return str(text).replace('\\', '\\\\').replace('*', '\\*').replace('_', '\\_').replace('|', '\\|')
+
+
 def write_report(results, controls, path):
     by_id = {c['id']: c for c in controls}
     counts = {s: sum(r['status'] == s for r in results) for s in ('PASS', 'FAIL', 'NOT_IMPLEMENTED', 'ERROR')}
@@ -92,9 +97,9 @@ def write_report(results, controls, path):
     for r in results:
         c = by_id.get(r['control_id'], {})
         m = c.get('mappings', {})
-        findings = '<br>'.join(r.get('findings', [])) or '–'
+        findings = '<br>'.join(_cell(f) for f in r.get('findings', [])) or '–'
         evidence = f"[{r['control_id']}](evidence/{r['control_id']}.json)" if 'raw' in r else r['control_id']
-        lines.append(f"| {evidence} | {r['status']} | {c.get('title', '')} | {', '.join(m.get('nist_800_53', []))} | "
+        lines.append(f"| {evidence} | {r['status']} | {_cell(c.get('title', ''))} | {', '.join(m.get('nist_800_53', []))} | "
                      f"{', '.join(m.get('cis_aws', []))} | {findings} |")
     lines += ['', 'Every evidence file holds the raw API response and its SHA-256; '
               '[`oscal/assessment-results.json`](oscal/assessment-results.json) has one observation per control '
